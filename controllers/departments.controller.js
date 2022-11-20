@@ -9,9 +9,19 @@ module.exports.depatrmentsController = {
       return res.json({ error: error.message });
     }
   },
+
   async delDep(req, res) {
     try {
       await Department.findByIdAndDelete(req.params.id);
+      const data = await Department.find();
+      return res.json(data);
+    } catch (error) {
+      return res.json({ error: error.message });
+    }
+  },
+
+  async getDepartments(req, res) {
+    try {
       const data = await Department.find();
       return res.json(data);
     } catch (error) {
