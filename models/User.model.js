@@ -10,9 +10,11 @@ const UserSchema = mongoose.Schema(
     login: { type: String, unique: true, unique: true, required: true },
     password: { type: String, required: true },
     role: { type: String, default: "user", required: true },
-    avatarImg: String,
+    avatarImg: { type: String, default: null },
     schedule: String,
     department: { type: mongoose.Schema.Types.ObjectId, ref: "Department" },
+    jobTitle: String,
+    birthDay: String,
   },
   { timestamps: true }
 );

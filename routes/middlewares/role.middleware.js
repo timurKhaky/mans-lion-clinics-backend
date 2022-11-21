@@ -2,14 +2,10 @@ const Invite = require("../../models/Invite.model");
 
 module.exports = async (req, res, next) => {
   try {
-    const { code } = req.body;
-    if (!code) {
-      return (req.role = "user");
-    }
+    const { code } = req.headers;
 
     const invites = await Invite.find();
     const condidate = invites.filter((item) => item.list.includes(code));
-
     if (condidate.length > 0) {
       await Invite.findByIdAndUpdate(condidate[0]._id, {
         $pull: {
@@ -17,11 +13,10 @@ module.exports = async (req, res, next) => {
         },
       });
       req.role = condidate[0].role;
-      next();
     } else {
       req.role = "user";
-      next();
     }
+    next();
   } catch (error) {
     res.json({ error: error.message });
   }

@@ -1,26 +1,37 @@
 const User = require("../models/User.model");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
-const { findById } = require("../models/User.model");
 
 module.exports.usersController = {
   async signUp(req, res) {
     try {
-      const { fullName, login, password, schedule } = req.body;
+      const { fullName, login, password, schedule, birthDay, jobTitle } =
+        req.body;
+
       const hash = await bcrypt.hash(
         password,
         Number(process.env.BCRYPT_ROUNDS)
       );
       const data = await User.create({
+        birthDay,
+        jobTitle: jobTitle,
         fullName,
         login,
         password: hash,
         role: req.role,
-        schedule,
-        avatarImg: req.file.path ? req.file.path : null,
+        schedule: schedule,
       });
 
-      return res.json(data);
+      if (!!req.file) {
+        await User.findByIdAndUpdate(
+          data._id,
+          {
+            avatarImg: req.file.path,
+          },
+          { new: true }
+        );
+      }
+      return res.json("Пользователь успешно зарегистрирован");
     } catch (error) {
       return res.json({ error: error.message });
     }
