@@ -7,5 +7,6 @@ const router = Router();
 
 router.post("/", depatrmentsController.addDep);
 router.delete("/:id", depatrmentsController.delDep);
+router.get("/", depatrmentsController.getDepartments);
 
 module.exports = router;
