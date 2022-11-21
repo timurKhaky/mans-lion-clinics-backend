@@ -8,6 +8,7 @@ const app = express();
 
 app.use(express.json());
 app.use(cors());
+app.use("/images", express.static(__dirname + "/images"));
 
 app.use("/invites", require("./routes/invites.route"));
 app.use("/user", require("./routes/users.route"));

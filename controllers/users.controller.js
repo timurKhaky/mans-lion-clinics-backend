@@ -70,4 +70,13 @@ module.exports.usersController = {
       return res.json({ error: error.message });
     }
   },
+
+  async getUsers(req, res) {
+    try {
+      const data = await User.find();
+      return res.json(data);
+    } catch (error) {
+      return res.json({ error: error.message });
+    }
+  },
 };

@@ -13,5 +13,6 @@ router.post(
 );
 router.post("/signin", usersController.signIn);
 router.patch("/:id", fileMiddleware.single("img"), usersController.addImg);
+router.get("/", fileMiddleware.single("img"), usersController.getUsers);
 
 module.exports = router;
