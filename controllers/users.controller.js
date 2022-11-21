@@ -5,8 +5,15 @@ const jwt = require("jsonwebtoken");
 module.exports.usersController = {
   async signUp(req, res) {
     try {
-      const { fullName, login, password, schedule, birthDay, jobTitle } =
-        req.body;
+      const {
+        fullName,
+        login,
+        password,
+        schedule,
+        birthDay,
+        jobTitle,
+        department,
+      } = req.body;
 
       const hash = await bcrypt.hash(
         password,
@@ -17,6 +24,7 @@ module.exports.usersController = {
         jobTitle: jobTitle,
         fullName,
         login,
+        department,
         password: hash,
         role: req.role,
         schedule: schedule,
