@@ -62,7 +62,11 @@ module.exports.usersController = {
         .json({ error: "Ошибка авторизации. Пользователь не найден." });
     }
     try {
-      const payload = { id: condidate.id, login: condidate.login };
+      const payload = {
+        id: condidate.id,
+        login: condidate.login,
+        role: condidate.role,
+      };
       const token = jwt.sign(payload, process.env.SECRET_JWT_KEY, {
         expiresIn: "24h",
       });
