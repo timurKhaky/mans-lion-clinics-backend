@@ -11,10 +11,14 @@ const UserSchema = mongoose.Schema(
     password: { type: String, required: true },
     role: { type: String, default: "user", required: true },
     avatarImg: { type: String, default: null },
-    schedule: String,
-    department: { type: mongoose.Schema.Types.ObjectId, ref: "Department" },
-    jobTitle: String,
-    birthDay: String,
+    schedule: {},
+    department: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Department",
+      default: null,
+    },
+    jobTitle: {},
+    birthDay: {},
   },
   { timestamps: true }
 );
