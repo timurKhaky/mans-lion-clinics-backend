@@ -10,10 +10,6 @@ const router = Router();
 router.post("/", authMiddleWare, patientRecordsController.addRecord);
 router.delete("/:id", authMiddleWare, patientRecordsController.delRecord);
 router.get("/:id", authMiddleWare, patientRecordsController.getRecordByPatien);
-router.get(
-  "/:_doctorId",
-  authMiddleWare,
-  patientRecordsController.getRecordByDoctor
-);
+router.get("/doctor/:id", patientRecordsController.getRecordByDoctor);
 
 module.exports = router;

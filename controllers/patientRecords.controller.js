@@ -4,6 +4,7 @@ const PatientRecord = require("../models/PatientRecord.model");
 module.exports.patientRecordsController = {
   async addRecord(req, res) {
     try {
+      console.log(req.body);
       const { _doctorId, date, time } = req.body;
       const condidate = await PatientRecord.find({ _doctorId });
       const userFilter = condidate.filter(
@@ -69,11 +70,12 @@ module.exports.patientRecordsController = {
   async getRecordByDoctor(req, res) {
     try {
       const data = await PatientRecord.find({
-        _doctorId: req.params._doctorId,
+        _doctorId: req.params.id,
       }).populate({
         path: "_doctorId _patientId",
         select: "fullName",
       });
+      return res.json(data);
     } catch (error) {
       return res.json({ error: error.message });
     }
