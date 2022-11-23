@@ -9,7 +9,7 @@ const router = Router();
 
 router.post("/", authMiddleWare, patientRecordsController.addRecord);
 router.delete("/:id", authMiddleWare, patientRecordsController.delRecord);
-router.get("/:id", authMiddleWare, patientRecordsController.getRecordByPatien);
+// router.get("/:id", authMiddleWare, patientRecordsController.getRecordByPatien);
 router.get("/doctor/:id", patientRecordsController.getRecordByDoctor);
-
+router.get("/role", authMiddleWare, patientRecordsController.getRecordByRole);
 module.exports = router;
