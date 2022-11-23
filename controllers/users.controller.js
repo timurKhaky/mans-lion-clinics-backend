@@ -109,4 +109,12 @@ module.exports.usersController = {
       return res.json({ error: error.message });
     }
   },
+  async getChatUsers(req, res) {
+    try {
+      const users = await User.find({ role: "user" });
+      return res.json(users);
+    } catch (error) {
+      return res.json({ error: error.message });
+    }
+  },
 };

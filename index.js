@@ -14,6 +14,7 @@ app.use("/invites", require("./routes/invites.route"));
 app.use("/user", require("./routes/users.route"));
 app.use("/dep", require("./routes/departments.route"));
 app.use("/record", require("./routes/patientRecords.route"));
+app.use(require("./routes/messages.route"));
 
 async function server(port) {
   try {
