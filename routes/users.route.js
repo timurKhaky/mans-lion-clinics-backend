@@ -15,4 +15,5 @@ router.post("/signin", usersController.signIn);
 router.patch("/:id", fileMiddleware.single("img"), usersController.addImg);
 router.get("/", fileMiddleware.single("img"), usersController.getUsers);
 router.get("/:id", usersController.getUserById);
+router.get("/users/chatusers", usersController.getChatUsers);
 module.exports = router;
