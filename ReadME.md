@@ -1,6 +1,6 @@
 # Веб-сайт клиники
 
-**frontend**
+**backend**
 
 ## Decription
 
