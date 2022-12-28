@@ -41,5 +41,5 @@
 
 ##### Разработано совместно с:
 
-1. **[Laziyni](https://github.com/)**
-2. **[Yanarkaev](https://github.com/Yanarkaev)**
+1. **[Laziyni](https://github.com/Laziyni)**
+2. **[timurKhaky](https://github.com/timurKhaky)**
